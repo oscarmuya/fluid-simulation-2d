@@ -8,6 +8,9 @@ pub struct Particle {
     pub mass: f32,
 }
 
+#[derive(Component)]
+pub struct ParticleMaterial(pub Handle<ColorMaterial>);
+
 #[derive(Component, Debug)]
 pub struct Velocity {
     pub x: f32,

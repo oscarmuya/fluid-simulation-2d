@@ -9,14 +9,17 @@ fn main() {
     App::new()
         .add_plugins(DefaultPlugins.set(WindowPlugin {
             primary_window: Some(Window {
-                title: "Bounce Simulation".to_string(),
+                title: "Fluid Simulation".to_string(),
                 resolution: WindowResolution::new(800, 800),
                 ..default()
             }),
             ..default()
         }))
-        .add_systems(Startup, (setup_camera, systems::setup_circle).chain())
-        .add_systems(Update, (systems::move_circle, systems::check_collision))
+        .add_systems(Startup, (setup_camera, systems::setup_particles).chain())
+        .add_systems(
+            Update,
+            (systems::move_particles, systems::check_particle_collision),
+        )
         .run();
 }
 
