@@ -18,7 +18,11 @@ fn main() {
         .add_systems(Startup, (setup_camera, systems::setup_particles).chain())
         .add_systems(
             Update,
-            (systems::move_particles, systems::check_particle_collision),
+            (
+                systems::mouse_button_input,
+                systems::move_particles,
+                systems::particle_physics,
+            ),
         )
         .run();
 }
